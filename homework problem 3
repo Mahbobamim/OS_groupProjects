@@ -1,0 +1,79 @@
+import java.util.Scanner;
+import java.util.Arrays;
+public class Thread {
+	public static void main(String[] args) throws InterruptedException {
+   System.out.println("enter how many numbers ");
+	Scanner scan= new Scanner(System.in);
+	Scanner scan1= new Scanner(System.in);
+	int x= scan.nextInt();
+	System.out.println("enter the numbers ");
+	int[] numbers= new int[x];
+	Average a= new Average(numbers);
+	Max m= new Max(numbers);
+	Min m1= new Min(numbers);
+	for(int i=0; i<numbers.length; i++) {
+		numbers[i]= scan1.nextInt();
+	}
+	
+	a.average();
+	m1.min();
+	m.max();
+	
+	}
+}
+
+public class Average  extends Thread{
+	private int [] n;
+	int sum=0;
+	public Average(int [] a) {
+		n=a;
+	}
+	public void average() {
+	
+		for (int i=0; i<n.length; i++) {
+			sum=sum+n[i];
+			}
+		
+		double ave = sum / n.length;
+		System.out.print("\n the average value is " + ave);
+	}
+	
+ 
+}
+
+public class Max extends Thread {
+	private int [] n;
+    public Max(int [] a) {
+		n=a;
+	}
+    public void max() {
+    	int maxvalue= n[0];
+    	for(int i=0; i<n.length; i++) {
+    		if(n[i]>maxvalue) {
+    			maxvalue= n[i];
+    		}
+    		
+    		
+    	}
+    	System.out.println("\n\n The maximum value is "+ maxvalue);
+    }
+}
+
+public class Min extends Thread {
+	private int [] n;
+    public Min(int [] a) {
+		n=a;
+	}
+    public void min() {
+    	int minvalue= n[0];
+    	for(int i=0; i<n.length; i++) {
+    		if(n[i]<minvalue) {
+    			minvalue= n[i];
+    		}
+    		
+    		
+    	}
+    	System.out.println("\n\n The minimum value is "+ minvalue);
+    }
+}
+
