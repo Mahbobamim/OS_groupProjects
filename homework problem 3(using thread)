@@ -1,0 +1,108 @@
+//using thread
+import java.util.Scanner;
+
+public class Final implements Runnable{
+	private int [] n;
+	int sum=0;
+	 Thread one=new Thread();
+	 Thread two= new Thread();
+	 Thread three= new Thread();
+	
+	public Final (int [] a) {
+		n=a;
+		}
+
+
+
+	public void average() {
+		
+	
+		for (int i=0; i<n.length; i++) {
+			sum=sum+n[i];
+			}
+		
+		double ave = sum / n.length;
+		System.out.print("\n the average value is " + ave);
+		one.start();
+	}
+	
+
+
+ 
+ 
+		
+	    public void min() {
+	    	
+	    	int minvalue= n[0];
+	    	for(int i=0; i<n.length; i++) {
+	    		if(n[i]<minvalue) {
+	    			minvalue= n[i];
+	    		}
+	    		
+	    		
+	    	}
+	    
+	    	System.out.println("\n\n The minimum value is "+ minvalue);
+	    	two.start();
+	    }
+
+
+	 
+	    public void max() {
+	    	
+	    	int maxvalue= n[0];
+	    	for(int i=0; i<n.length; i++) {
+	    		if(n[i]>maxvalue) {
+	    			maxvalue= n[i];
+	    		}
+	    		
+	    		
+	    	}
+	    	
+	    	System.out.println("\n\n The maximum value is "+ maxvalue);
+	    	three.start();
+	    }
+	
+
+
+
+
+
+
+}
+
+public interface Runnable {
+	public void average();
+	public void min();
+	public void max() ;
+
+}
+import java.util.Scanner;
+
+public class Test {
+
+	public static void main(String[] args) {
+
+	
+	   System.out.println("enter how many numbers ");
+		Scanner scan= new Scanner(System.in);
+		Scanner scan1= new Scanner(System.in);
+		int x= scan.nextInt();
+		System.out.println("enter the numbers ");
+		int[] numbers= new int[x];
+            Final f= new Final(numbers);
+		Thread a= new Thread();
+		a.start();
+		
+		for(int i=0; i<numbers.length; i++) {
+			numbers[i]= scan1.nextInt();
+		}
+		f.average();
+		f.min();
+		f.max();
+	
+	}	
+
+	}
+
+
